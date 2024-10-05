@@ -1425,7 +1425,6 @@ function Library:NewWindow(name)
 			LabelTitle.TextSize = 17
 			LabelTitle.TextXAlignment = Enum.TextXAlignment.Center
 			LabelTitle.TextWrapped = true
-			LabelTitle.TextScaled = true
 
 			function labelFunction:RefeshText(text)
 				LabelTitle.Text = tostring(text)
