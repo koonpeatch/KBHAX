@@ -1367,35 +1367,35 @@ function Library:NewWindow(name)
 
 		function LibraryElements:CreateLabelTextScaled(name)
 			local labelFunction = {}
-			local LabelHolder = Instance.new("Frame")
-			local LabelTitle = Instance.new("TextLabel")
+			local LabelHolder2 = Instance.new("Frame")
+			local LabelTitle2 = Instance.new("TextLabel")
 
 			local LabelName = RemoveSpaces(name)
 
-			LabelHolder.Name = (LabelName .. "LabelHolder")
-			LabelHolder.Parent = Section1Holder
-			LabelHolder.BackgroundColor3 = Color3.new(0.137255, 0.137255, 0.137255)
-			LabelHolder.BorderSizePixel = 0
-			LabelHolder.Size = UDim2.new(0, 170, 0, 30)
+			LabelHolder2.Name = (LabelName .. "LabelHolder")
+			LabelHolder2.Parent = Section1Holder
+			LabelHolder2.BackgroundColor3 = Color3.new(0.137255, 0.137255, 0.137255)
+			LabelHolder2.BorderSizePixel = 0
+			LabelHolder2.Size = UDim2.new(0, 170, 0, 30)
 
-			LabelTitle.Name = "LabelTitle"
-			LabelTitle.Parent = LabelHolder
-			LabelTitle.BackgroundColor3 = Color3.new(0.121569, 0.121569, 0.121569)
-			LabelTitle.BackgroundTransparency = 0
-			LabelTitle.BorderSizePixel = 0
-			LabelTitle.ClipsDescendants = true
-			LabelTitle.Position = UDim2.new(0, 0, 0, 0)
-			LabelTitle.Size = UDim2.new(0, 170, 0, 30)
-			LabelTitle.Font = Enum.Font.SourceSansSemibold
-			LabelTitle.Text = name
-			LabelTitle.TextColor3 = Color3.new(1, 1, 1)
-			LabelTitle.TextSize = 17
-			LabelTitle.TextXAlignment = Enum.TextXAlignment.Center
-			LabelTitle.TextWrapped = true
-			LabelTitle.TextScaled = true
+			LabelTitle2.Name = "LabelTitle"
+			LabelTitle2.Parent = LabelHolder
+			LabelTitle2.BackgroundColor3 = Color3.new(0.121569, 0.121569, 0.121569)
+			LabelTitle2.BackgroundTransparency = 0
+			LabelTitle2.BorderSizePixel = 0
+			LabelTitle2.ClipsDescendants = true
+			LabelTitle2.Position = UDim2.new(0, 0, 0, 0)
+			LabelTitle2.Size = UDim2.new(0, 170, 0, 30)
+			LabelTitle2.Font = Enum.Font.SourceSansSemibold
+			LabelTitle2.Text = name
+			LabelTitle2.TextColor3 = Color3.new(1, 1, 1)
+			LabelTitle2.TextSize = 17
+			LabelTitle2.TextXAlignment = Enum.TextXAlignment.Center
+			LabelTitle2.TextWrapped = true
+			LabelTitle2.TextScaled = true
 
 			function labelFunction:RefeshText(text)
-				LabelTitle.Text = tostring(text)
+				LabelTitle2.Text = tostring(text)
 			end
 
 		function LibraryElements:CreateLabel(name)
