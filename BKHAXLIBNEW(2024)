@@ -1365,81 +1365,6 @@ function Library:NewWindow(name)
             return textbotable
 		end
 
-		function LibraryElements:CreateLabelTextScaled(name)
-			local labelFunction2 = {}
-			local LabelHolder2 = Instance.new("Frame")
-			local LabelTitle2 = Instance.new("TextLabel")
-
-			local LabelName = RemoveSpaces(name)
-
-			LabelHolder2.Name = (LabelName .. "LabelHolder")
-			LabelHolder2.Parent = Section1Holder
-			LabelHolder2.BackgroundColor3 = Color3.new(0.137255, 0.137255, 0.137255)
-			LabelHolder2.BorderSizePixel = 0
-			LabelHolder2.Size = UDim2.new(0, 170, 0, 30)
-
-			LabelTitle2.Name = "LabelTitle"
-			LabelTitle2.Parent = LabelHolder2
-			LabelTitle2.BackgroundColor3 = Color3.new(0.121569, 0.121569, 0.121569)
-			LabelTitle2.BackgroundTransparency = 0
-			LabelTitle2.BorderSizePixel = 0
-			LabelTitle2.ClipsDescendants = true
-			LabelTitle2.Position = UDim2.new(0, 0, 0, 0)
-			LabelTitle2.Size = UDim2.new(0, 170, 0, 30)
-			LabelTitle2.Font = Enum.Font.SourceSansSemibold
-			LabelTitle2.Text = name
-			LabelTitle2.TextColor3 = Color3.new(1, 1, 1)
-			LabelTitle2.TextSize = 17
-			LabelTitle2.TextXAlignment = Enum.TextXAlignment.Center
-			LabelTitle2.TextWrapped = true
-			LabelTitle2.TextScaled = true
-        
-			function labelFunction2:RefeshText(text)
-				LabelTitle2.Text = tostring(text)
-			end
-
-            SectionToggle.MouseButton1Down:Connect(function()
-				if not IsSectionOpen then
-					ExtendSectionSize(30)
-					ExtendBodySize(30)
-				elseif IsSectionOpen then
-					UnExtendSectionSize(30)
-					UnExtendBodySize(30)
-				end
-			end)
-
-			WindowToggle.MouseButton1Down:Connect(function()
-				if not IsTabOpen then
-					if IsSectionOpen then
-						ExtendBodySize(30)
-						TweenService:Create(SectionToggle, TweenInfo.new(0, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {Rotation = 360}):Play()
-						TweenService:Create(Section1Holder, TweenInfo.new(0.5, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {BackgroundTransparency = 0}):Play()
-					elseif not IsSectionOpen then
-						TweenService:Create(Section1Holder, TweenInfo.new(0.5, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {BackgroundTransparency = 0}):Play()
-					end
-
-
-				elseif IsTabOpen then
-					if IsSectionOpen then
-						UnExtendBodySize(30)
-						TweenService:Create(SectionToggle, TweenInfo.new(0, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {Rotation = 0}):Play()
-						TweenService:Create(Section1Holder, TweenInfo.new(0.5, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {BackgroundTransparency = 1}):Play()
-					elseif not IsSectionOpen then
-						TweenService:Create(Section1Holder, TweenInfo.new(0.5, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {BackgroundTransparency = 1}):Play()
-					end
-				end
-
-				TweenService:Create(SectionToggle, TweenInfo.new(0.4, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {TextTransparency = 1}):Play()
-
-				SectionToggle.Visible = false
-
-				repeat wait() until SectionToggle.TextTransparency == 1
-				SectionToggle.Visible = true
-				TweenService:Create(SectionToggle, TweenInfo.new(0.4, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {TextTransparency = 0}):Play()
-			end)
-
-			return labelFunction2
-		end
 
 		function LibraryElements:CreateLabel(name)
 			local labelFunction = {}
@@ -1459,7 +1384,6 @@ function Library:NewWindow(name)
 			LabelTitle.BackgroundColor3 = Color3.new(0.121569, 0.121569, 0.121569)
 			LabelTitle.BackgroundTransparency = 0
 			LabelTitle.BorderSizePixel = 0
-			LabelTitle.ClipsDescendants = true
 			LabelTitle.Position = UDim2.new(0, 0, 0, 0)
 			LabelTitle.Size = UDim2.new(0, 170, 0, 30)
 			LabelTitle.Font = Enum.Font.SourceSansSemibold
