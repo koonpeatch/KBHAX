@@ -1365,6 +1365,38 @@ function Library:NewWindow(name)
             return textbotable
 		end
 
+		function LibraryElements:CreateLabelTextScaled(name)
+			local labelFunction = {}
+			local LabelHolder = Instance.new("Frame")
+			local LabelTitle = Instance.new("TextLabel")
+
+			local LabelName = RemoveSpaces(name)
+
+			LabelHolder.Name = (LabelName .. "LabelHolder")
+			LabelHolder.Parent = Section1Holder
+			LabelHolder.BackgroundColor3 = Color3.new(0.137255, 0.137255, 0.137255)
+			LabelHolder.BorderSizePixel = 0
+			LabelHolder.Size = UDim2.new(0, 170, 0, 30)
+
+			LabelTitle.Name = "LabelTitle"
+			LabelTitle.Parent = LabelHolder
+			LabelTitle.BackgroundColor3 = Color3.new(0.121569, 0.121569, 0.121569)
+			LabelTitle.BackgroundTransparency = 0
+			LabelTitle.BorderSizePixel = 0
+			LabelTitle.ClipsDescendants = true
+			LabelTitle.Position = UDim2.new(0, 0, 0, 0)
+			LabelTitle.Size = UDim2.new(0, 170, 0, 30)
+			LabelTitle.Font = Enum.Font.SourceSansSemibold
+			LabelTitle.Text = name
+			LabelTitle.TextColor3 = Color3.new(1, 1, 1)
+			LabelTitle.TextSize = 17
+			LabelTitle.TextXAlignment = Enum.TextXAlignment.Center
+			LabelTitle.TextWrapped = true
+			LabelTitle.TextScaled = true
+
+			function labelFunction:RefeshText(text)
+				LabelTitle.Text = tostring(text)
+			end
 
 		function LibraryElements:CreateLabel(name)
 			local labelFunction = {}
