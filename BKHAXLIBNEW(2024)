@@ -1441,6 +1441,84 @@ function Library:NewWindow(name)
 			return labelFunction
 		end
 
+        function LibraryElements:CreateLabelTextScaled(name)
+			local labelFunction2 = {}
+			local LabelHolder = Instance.new("Frame")
+			local LabelTitle = Instance.new("TextLabel")
+
+			local LabelName = RemoveSpaces(name)
+
+			LabelHolder.Name = (LabelName .. "LabelHolder")
+			LabelHolder.Parent = Section1Holder
+			LabelHolder.BackgroundColor3 = Color3.new(0.137255, 0.137255, 0.137255)
+			LabelHolder.BorderSizePixel = 0
+			LabelHolder.Size = UDim2.new(0, 170, 0, 30)
+
+			LabelTitle.Name = "LabelTitle"
+			LabelTitle.Parent = LabelHolder
+			LabelTitle.BackgroundColor3 = Color3.new(0.121569, 0.121569, 0.121569)
+			LabelTitle.BackgroundTransparency = 0
+			LabelTitle.BorderSizePixel = 0
+			LabelTitle.Position = UDim2.new(0, 0, 0, 0)
+			LabelTitle.Size = UDim2.new(0, 170, 0, 30)
+			LabelTitle.Font = Enum.Font.SourceSansSemibold
+			LabelTitle.Text = name
+			LabelTitle.TextColor3 = Color3.new(1, 1, 1)
+			LabelTitle.TextSize = 17
+			LabelTitle.TextXAlignment = Enum.TextXAlignment.Center
+			LabelTitle.TextWrapped = true
+            LabelTitle.TextScaled = true
+
+
+			function labelFunction2:RefeshText(text)
+				LabelTitle.Text = tostring(text)
+			end
+
+
+			SectionToggle.MouseButton1Down:Connect(function()
+				if not IsSectionOpen then
+					ExtendSectionSize(30)
+					ExtendBodySize(30)
+				elseif IsSectionOpen then
+					UnExtendSectionSize(30)
+					UnExtendBodySize(30)
+				end
+			end)
+
+			WindowToggle.MouseButton1Down:Connect(function()
+				if not IsTabOpen then
+					if IsSectionOpen then
+						ExtendBodySize(30)
+						TweenService:Create(SectionToggle, TweenInfo.new(0, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {Rotation = 360}):Play()
+						TweenService:Create(Section1Holder, TweenInfo.new(0.5, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {BackgroundTransparency = 0}):Play()
+					elseif not IsSectionOpen then
+						TweenService:Create(Section1Holder, TweenInfo.new(0.5, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {BackgroundTransparency = 0}):Play()
+					end
+
+
+				elseif IsTabOpen then
+					if IsSectionOpen then
+						UnExtendBodySize(30)
+						TweenService:Create(SectionToggle, TweenInfo.new(0, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {Rotation = 0}):Play()
+						TweenService:Create(Section1Holder, TweenInfo.new(0.5, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {BackgroundTransparency = 1}):Play()
+					elseif not IsSectionOpen then
+						TweenService:Create(Section1Holder, TweenInfo.new(0.5, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {BackgroundTransparency = 1}):Play()
+					end
+				end
+
+				TweenService:Create(SectionToggle, TweenInfo.new(0.4, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {TextTransparency = 1}):Play()
+
+				SectionToggle.Visible = false
+
+				repeat wait() until SectionToggle.TextTransparency == 1
+				SectionToggle.Visible = true
+				TweenService:Create(SectionToggle, TweenInfo.new(0.4, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {TextTransparency = 0}):Play()
+			end)
+
+			return labelFunction2
+		end
+
+
 
 		function LibraryElements:CreateDropdown(name, options, presetoption, action)
 
